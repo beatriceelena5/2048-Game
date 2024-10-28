@@ -1,18 +1,32 @@
 # 2048-Game
-  A console-based 2048 game developed in C with ncurses, featuring intuitive controls, real-time scoring, and enhanced functionality like automatic moves, recent command history, and live date and time display.
 
-  I implemented the functions one by one, testing each individually to ensure they worked correctly.
+A console-based 2048 game developed in C with ncurses, featuring intuitive controls, real-time scoring, automatic moves, recent command history, and live date and time display.
 
-  *Main Menu*: The menu setup is done in the "menu" function, while the title is created in the "titlu" function. The menu has four options, navigable using the up/down arrow keys or the W/S keys, and options can be selected by pressing Enter. The currently selected option is highlighted.
+## Overview
 
-  *New Game*: The first option is New Game. The "new_game" function starts a new game, initializing two cells with values from the set {2, 4}, with the rest set to 0. For displaying the game, I implemented the "show_game" function, which shows the game menu, randomly generates a 2 or 4 in an available position, and handles win/loss conditions. The game menu includes the game board, score, possible valid moves, date and time, and, as an added feature, a list of recent commands. I also implemented the “afisare_data” function to format and display the date and time. The New Game option continues into the "resume" function, where the game itself is played. This can be done using either the arrow keys or the WASD keys. If no command is entered within 5 seconds, the “mutare” function automatically performs the most efficient move in terms of freeing cells. If multiple moves free the same number of cells, they are prioritized based on the score achieved. This function also checks for move validity. To handle movement on the game board, I implemented four functions, “key_up,” “key_down,” “key_left,” and “key_right,” which are called whenever a move is made or its validity is tested. Throughout the game, pressing the q/Q key returns to the menu.
+This game follows the classic 2048 structure, enhanced with responsive menu navigation, real-time updates, and additional interactive features. Each function was carefully implemented and individually tested to ensure smooth gameplay.
 
-  *Resume*: The second option is Resume. If an unfinished game exists, it resumes according to the rules described above. If no such game exists, a window with an explanatory message appears, then returns to the menu.
+## Features
 
-  *Rules*: The third option is Rules. The “rules” function displays a window with the essential game rules. You can return to the menu by pressing q/Q.
+- **Main Menu**: Set up in the "menu" function with a title created by "titlu." The menu includes four options navigable by arrow keys or W/S keys, selectable with Enter. The current selection is highlighted.
+  
+- **New Game**: Initiates a new game in the "new_game" function, initializing two cells with values from {2, 4}. The "show_game" function displays the game board, score, valid moves, and recent commands, alongside date and time via the “afisare_data” function. 
+  - **Auto-Move**: After 5 seconds of inactivity, the “mutare” function executes the optimal move.
+  - **Directional Movement**: Implemented with “key_up,” “key_down,” “key_left,” and “key_right” functions for move validation and execution.
+  - **Return to Menu**: Pressing q/Q at any time returns to the main menu.
 
-  *Quit*: The final option is Quit, which ends the session and closes the program.
+- **Resume**: Continues an active game if one exists. If no game is in progress, displays a message and returns to the main menu.
 
-  Color initialization is handled in the "ipair" function. To facilitate the implementation, I created a structure containing the main data related to the game.
+- **Rules**: The "rules" function provides a window with essential game rules, accessible via q/Q.
 
-  Both the documentation review for the library and the game implementation spanned several days, totaling approximately 12-15 hours to complete the application.
+- **Quit**: Ends the session and closes the game.
+
+## Project Structure
+
+- **ipair**: Handles color initialization for the game.
+- **Data Structure**: Designed to store essential game-related data for easier management.
+
+## Development Notes
+
+The implementation and library documentation review took approximately 12-15 hours. Each function was tested individually to ensure accuracy and functionality.
+
